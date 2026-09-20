@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.jsx";
+import Home from "@/components/home.jsx";
+import Projects from "@/components/projects.jsx";
+import Contact from "@/components/contact.jsx";
+import Footer from "@/components/footer.jsx";
+---
+
+<Layout title="Ishara Udayamali">
+  <Nav client:load />
+  <Home client:load />
+  <Projects />
+  <Contact client:load />
+  <Footer client:load />
+</Layout>
