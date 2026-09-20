@@ -50,8 +50,9 @@ const Home = () => (
             </svg>
           </a>
           <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=isharaudayamali220@gmail.com&su=Project%20inquiry&body=Hi%20Ishara%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you."
             target="_blank"
-            href="mailto:isharaudayamali220@gmail.com"
+            rel="noopener noreferrer"
             aria-label="Email"
             className="text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
           >

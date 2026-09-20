@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, updateDoc, increment } from "firebase/firestore";
-import { db } from "../firebase.js";
 
 const LikeButton = () => {
   const [likes, setLikes] = useState(0);
@@ -13,54 +11,28 @@ const LikeButton = () => {
     setIsClient(true);
 
     const storedIsLiked = localStorage.getItem("websiteIsLiked");
+    const storedLikes = localStorage.getItem("websiteLikes");
     if (storedIsLiked) {
       setIsLiked(storedIsLiked === "true");
     }
-
-    // Listen for realtime updates from Firestore
-    const likeDocRef = doc(db, "likes", "counter");
-    const unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const currentLikes = docSnap.data().likes;
-        // Only update if the server value is different (prevents overwrite during optimistic update)
-        setLikes(() => {
-          const newLikes = Math.max(0, currentLikes);
-          return newLikes;
-        });
-      }
-    });
-
-    return () => unsubscribe();
+    if (storedLikes) {
+      setLikes(Math.max(0, Number(storedLikes)));
+    }
   }, []);
 
   const handleLike = async () => {
     if (isProcessing || isLiked) return;
 
-    // Optimistic Update
-    const previousLikes = likes;
-    setLikes((prev) => prev + 1);
+    const nextLikes = likes + 1;
+    setLikes(nextLikes);
     setIsLiked(true);
     setIsAnimating(true);
     localStorage.setItem("websiteIsLiked", "true");
+    localStorage.setItem("websiteLikes", String(nextLikes));
 
-    // Reset animation after it finishes
     setTimeout(() => setIsAnimating(false), 600);
-
-    try {
-      setIsProcessing(true);
-      const likeDocRef = doc(db, "likes", "counter");
-      await updateDoc(likeDocRef, {
-        likes: increment(1),
-      });
-    } catch (error) {
-      console.error("Error updating likes:", error);
-      // Rollback on error
-      setLikes(previousLikes);
-      setIsLiked(false);
-      localStorage.removeItem("websiteIsLiked");
-    } finally {
-      setIsProcessing(false);
-    }
+    setIsProcessing(true);
+    setTimeout(() => setIsProcessing(false), 600);
   };
 
   if (!isClient) return null;
