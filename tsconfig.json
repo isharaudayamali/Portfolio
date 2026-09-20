@@ -1,14 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "module": "ES2020",
-    "allowImportingTsExtensions": true,
+    "target": "ES2020",
+    "module": "ESNext",
     "noEmit": true,
-    "types": [
-      "astro/client"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
     "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
     "paths": {
       "@/*": [
         "./src/*"
@@ -20,8 +20,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   },
-  "include": [
-    "src/**/*",
-    "astro.config.ts"
-  ]
+  "include": ["src", "vite.config.js"]
 }

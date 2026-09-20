@@ -25,19 +25,19 @@ const LogoWall = () => (
 				{[...technologies, ...technologies].map((technology, index) => (
 					<div
 						key={`${technology.slug}-${index}`}
-						className="group flex items-center gap-2 pr-12 transition-all duration-300 md:pr-20"
+						className="group flex items-center gap-3 pr-14 transition-all duration-300 md:gap-4 md:pr-24"
 						aria-hidden={index >= technologies.length}
 					>
 						<img
 							src={`/svg/${technology.slug}.svg`}
 							alt={technology.label}
-							className="h-7 w-auto object-contain opacity-60 transition-transform group-hover:scale-110"
-							width="30"
-							height="30"
+							className="h-9 w-auto object-contain opacity-75 drop-shadow-[0_0_10px_#a476ff33] transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-hover:drop-shadow-[0_0_14px_#a476ff88] md:h-11"
+							width="44"
+							height="44"
 							loading={index < technologies.length ? "eager" : "lazy"}
 							decoding="async"
 						/>
-						<span className="whitespace-nowrap text-lg font-medium text-[var(--white-icon)]">
+						<span className="whitespace-nowrap text-lg font-medium text-[var(--white)] md:text-xl">
 							{technology.label}
 						</span>
 					</div>
