@@ -1,24 +1,42 @@
 const projects = [
-  {
-    title: "Portfolio Website",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Portfolio+Website",
-    link: "https://github.com/isharaudayamali/Portfolio_native.git",
+  {//Native Portfolio Website
+    title: "Portfolio Website-Native",
+    image: "/Projects/Portfolio-Native.png",
+    link: "https://github.com/isharaudayamali/My_Portfolio_Native",
     preview: "https://isharaudayamali.github.io/My_Portfolio_Native/",
-    status: "Deployed",
+    demo: true,
+    status: "Live Project",
   },
   {
-    title: "Introduction to Express",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Introduction+to+Express",
-    link: "https://github.com/isharaudayamali/Introduction-to-express.git",
-    preview: "https://github.com/isharaudayamali/Introduction-to-express.git",
-    status: "Backend Project",
+    title: "BlessingBridge",
+    image: "/Projects/BlessingBridge.png",
+    link: "https://github.com/isharaudayamali/BlessingBridge",
+    preview: "https://blessingg-bridge.vercel.app/",
+    demo: true,
+    status: "Live Project",
   },
   {
-    title: "Customer Management System",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Customer+Management+System",
-    link: "https://github.com/isharaudayamali/Customer_Management_SpringBoot.git",
-    preview: "https://github.com/isharaudayamali/Customer_Management_SpringBoot.git",
-    status: "Spring Boot Project",
+    title: "IMS Inventory Management System",
+    image: "/Projects/ims.png",
+    link: "https://github.com/Nugi29/IMS-Inventory-Management-System",
+    preview: "https://ims-premium-inventory.vercel.app/login",
+    demo: true,
+    status: "Group Project",
+  },
+  {
+    title: "WeatherPro",
+    image: "/Projects/WeatherPro.png",
+    link: "https://github.com/isharaudayamali/Whether_App-in-REACT",
+    preview: "https://isharaudayamali.github.io/Whether_App-in-REACT/",
+    demo: true,
+    status: "React Project",
+  },
+  {
+    title: "Hotel Booking System",
+    image: "/Projects/Hotel-Home.png",
+    link: "https://github.com/isharaudayamali/hotel-booking-system-in-PHP-",
+    preview: "https://github.com/isharaudayamali/hotel-booking-system-in-PHP-",
+    status: "PHP / MySQL Project",
   },
   {
     title: "EUC HarvestSuper Supplier",
@@ -68,48 +86,53 @@ const Projects = () => (
       <h3 className="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project) => (
-          <div key={project.title} className="group">
+          <article
+            key={project.title}
+            className="group overflow-hidden rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-2 transition duration-300 hover:-translate-y-1 hover:border-[#a476ff55]"
+          >
             <a
               href={project.preview}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="relative block overflow-hidden rounded-xl"
             >
-              <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="flex items-center px-3">
-                <div className="flex-grow">
-                  <h4 className="text-2xl font-semibold">{project.title}</h4>
-                  <span className="py-1 text-sm text-[var(--white-icon)]">
-                    {project.status}
-                  </span>
-                </div>
-                <div className="flex gap-2 ml-auto">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+              <span className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                {project.status}
+              </span>
+            </a>
+            <div className="flex items-center gap-4 px-3 py-4">
+              <h4 className="min-w-0 flex-1 text-xl font-semibold leading-tight md:text-2xl">
+                {project.title}
+              </h4>
+              <div className="flex shrink-0 gap-2">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={project.link}
+                  aria-label={`${project.title} GitHub repository`}
+                  className="flex size-11 items-center justify-center rounded-xl border border-[var(--white-icon-tr)] p-2 text-[var(--white-icon)] transition hover:border-[#a476ff88] hover:bg-[var(--white-icon-tr)] hover:text-white"
+                >
+                  {codeIcon}
+                </a>
+                {project.demo && (
                   <a
                     target="_blank"
-                    href={project.link}
-                    aria-label="GitHub"
-                    className="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
-                  >
-                    {codeIcon}
-                  </a>
-                  <a
-                    target="_blank"
+                    rel="noopener noreferrer"
                     href={project.preview}
-                    aria-label="Preview"
-                    className="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+                    aria-label={`${project.title} live preview`}
+                    className="flex size-11 items-center justify-center rounded-xl border border-[var(--white-icon-tr)] p-2 text-[var(--white-icon)] transition hover:border-[#a476ff88] hover:bg-[var(--white-icon-tr)] hover:text-white"
                   >
                     {arrowIcon}
                   </a>
-                </div>
+                )}
               </div>
-            </a>
-          </div>
+            </div>
+          </article>
         ))}
       </div>
       <a
